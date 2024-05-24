@@ -1,0 +1,15 @@
+schema: "./graphql/schema/schema.gql"
+emitLegacyCommonJSImports: false
+require:
+- ts-node/register
+generates:
+  ./graphql/src/resolvers.ts:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"
+    config:
+      useTypeImports: true
+      useIndexSignature: true
+  ./graphql/src/schema.ts:
+    plugins:
+      - "./graphql/exportSchemaCodegenPlugin.cts"
